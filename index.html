@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!--Bootstrap Source Material-->
+        <title>Home</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="styles.css">
+
+        <!--Color-->
+        <style> div{
+            background-color: DarkViolet;
+        }
+
+          #container {
+            left: 0px;
+            top: -100px;
+            height: calc(100vh + 100px);
+            overflow: hidden;
+            position: relative;
+        }
+
+          #animate{
+            margin: 0 auto;
+            width: 20px;
+            overflow: visible;
+            position: relative;
+        }
+
+          #all{
+            overflow: hidden;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+        }
+
+        </style>
+    </head>
+
+      <body>
+    <!--Dropdown Menu-->
+    <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menu
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="comics2.html"> Comics </a>
+            <a class="dropdown-item" href="shows.html"> Shows </a>
+            <a class="dropdown-item" href="music.html"> Music </a>
+          </div>
+        </div>
+
+        <div class= "jumbotron">
+          <button id="emojirain">Hungry?</button>
+            <div id="animate">
+            </div>
+            <h1 style= "background-color:DarkViolet;">Welcome!</h1>
+        </div>
+
+        <div class= "container">
+            <h4 style= "color: white;">DISCLAIMER:<h4>
+            <p style= "color: white;">For this website, I chose to make it about my favorite things. I sadly couldn't fit everything into the pages linked to this one. The topics below are some of my favorite things that I would have liked to put on separate pages but couldn't really be expanded upon. I hope you enjoy my work. **Also, I recommend clicking on the "Hungry?" button after you read this, but not too much. ;)** -Creator </p>
+        </div>
+<br/>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+                <h3>Favorite Video Game Series: The Legend of Zelda </h3>
+                <br/>
+                <img src= "loz.jpg" alt Legend of Zelda
+                    width="300"
+                    height="400">
+            </div>
+            <div class="col">
+              <h3>Favorite Sweet: Mochi</h3>
+              <br/>
+              <img src= "mochi.jpeg" alt Mochi
+                width="300"
+                height="200">
+            </div>
+            <div class="col">
+              <h3>Favorite Movie: The Book of Life</h3>
+              <br/>
+              <img src= "tbol.jpg" alt The Book of Life
+                width="275"
+                height="400">
+            </div>
+          </div>
+        </div>
+
+<br/>
+<br/>
+<br/>
+
+<script>
+document.querySelector('#emojirain').onclick = function() {
+                var container = document.getElementById('animate');
+                var emoji = ['🌽', '🍇', '🍌', '🍒', '🍕', '🥝', '🍭', '🥑', '🥭', '🥯', '🍔', '🍟', '🌭', '🥪', '🌮', '🍦', '🌯', '🍿', '🍓', '🥧', '🍒', '🍧', '🍩'];
+                var circles = [];
+
+                for (var i = 0; i < 15; i++) {
+                  addCircle(i * 150, [10 + 0, 300], emoji[Math.floor(Math.random() * emoji.length)]);
+                  addCircle(i * 150, [10 + 0, -300], emoji[Math.floor(Math.random() * emoji.length)]);
+                  addCircle(i * 150, [10 - 200, -300], emoji[Math.floor(Math.random() * emoji.length)]);
+                  addCircle(i * 150, [10 + 200, 300], emoji[Math.floor(Math.random() * emoji.length)]);
+                  addCircle(i * 150, [10 - 400, -300], emoji[Math.floor(Math.random() * emoji.length)]);
+                  addCircle(i * 150, [10 + 400, 300], emoji[Math.floor(Math.random() * emoji.length)]);
+                  addCircle(i * 150, [10 - 600, -300], emoji[Math.floor(Math.random() * emoji.length)]);
+                  addCircle(i * 150, [10 + 600, 300], emoji[Math.floor(Math.random() * emoji.length)]);
+                }
+
+
+
+                function addCircle(delay, range, color) {
+                  setTimeout(function() {
+                    var c = new Circle(range[0] + Math.random() * range[1], 80 + Math.random() * 4, color, {
+                      x: -0.15 + Math.random() * 0.3,
+                      y: 1 + Math.random() * 1
+                    }, range);
+                    circles.push(c);
+                  }, delay);
+                }
+
+                function Circle(x, y, c, v, range) {
+                  var _this = this;
+                  this.x = x;
+                  this.y = y;
+                  this.color = c;
+                  this.v = v;
+                  this.range = range;
+                  this.element = document.createElement('span');
+                  /*this.element.style.display = 'block';*/
+                  this.element.style.opacity = 0;
+                  this.element.style.position = 'absolute';
+                  this.element.style.fontSize = '26px';
+                  this.element.style.color = 'hsl('+(Math.random()*360|0)+',80%,50%)';
+                  this.element.innerHTML = c;
+                  container.appendChild(this.element);
+
+                  this.update = function() {
+                    if (_this.y > 800) {
+                    _this.y = 80 + Math.random() * 4;
+                    _this.x = _this.range[0] + Math.random() * _this.range[1];
+                  }
+                  _this.y += _this.v.y;
+                  _this.x += _this.v.x;
+                  this.element.style.opacity = 1;
+                  this.element.style.transform = 'translate3d(' + _this.x + 'px, ' + _this.y + 'px, 0px)';
+                  this.element.style.webkitTransform = 'translate3d(' + _this.x + 'px, ' + _this.y + 'px, 0px)';
+                  this.element.style.mozTransform = 'translate3d(' + _this.x + 'px, ' + _this.y + 'px, 0px)';
+                };
+              }
+
+              function animate() {
+                for (var i in circles) {
+                  circles[i].update();
+                }
+                requestAnimationFrame(animate);
+              }
+
+              animate();
+}
+</script>
+
+    </body>
+</html>
